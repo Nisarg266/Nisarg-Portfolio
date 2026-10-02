@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nisarg Panchal — Frontend Developer</title>
+    <meta
+      name="description"
+      content="Nisarg Panchal is a Frontend Developer focused on building responsive, interactive and user-friendly digital experiences with HTML, CSS, JavaScript and React."
+    />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Nisarg Panchal" />
+    <meta name="theme-color" content="#000000" />
+    <meta property="og:title" content="Nisarg Panchal — Frontend Developer" />
+    <meta
+      property="og:description"
+      content="Frontend Developer building responsive, interactive and user-friendly digital experiences with HTML, CSS, JavaScript and React."
+    />
+    <meta property="og:type" content="website" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      // theme bootstrap — must run before first paint to avoid a flash
+      ;(function () {
+        try {
+          // dark is the site's default look; 'system' still honored if set
+          var pref = localStorage.getItem('nisarg-theme') || 'dark'
+          var dark = window.matchMedia('(prefers-color-scheme: dark)').matches
+          var theme = pref === 'system' ? (dark ? 'dark' : 'light') : pref
+          document.documentElement.setAttribute('data-theme', theme)
+        } catch (e) {
+          document.documentElement.setAttribute('data-theme', 'dark')
+        }
+      })()
+    </script>
+    <style>
+      html,
+      body {
+        background: #000000;
+      }
+      html[data-theme='light'],
+      html[data-theme='light'] body {
+        background: #f4f2ec;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
