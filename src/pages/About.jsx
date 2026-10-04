@@ -1,6 +1,7 @@
 import SectionHeading from '../components/SectionHeading'
 import Reveal from '../components/Reveal'
 import SplitWords from '../components/SplitWords'
+import WarpHeading from '../components/WarpHeading'
 import { TLink } from '../components/Transition'
 import { ArrowRight } from '../components/Icons'
 import { usePageMeta } from '../hooks/usePageMeta'
@@ -24,10 +25,21 @@ export default function About() {
         <div className="orb-static about-orb" aria-hidden="true" />
         <div className="container">
           <SectionHeading title="About" id="about-page-title" />
-          <h1 className="page-title">
+          <WarpHeading
+            as="h1"
+            className="page-title"
+            id="about-page-title"
+            text={"ABOUT\nNISARG"}
+            outlineLines={[1]}
+            fontSize="clamp(2.7rem, 10vw, 8.8rem)"
+            fontWeight={600}
+            lineHeight={0.96}
+            letterSpacing="-0.035em"
+            onScroll={false}
+          >
             <SplitWords text="ABOUT" onScroll={false} />
             <SplitWords text="NISARG" className="outline-text" onScroll={false} delay={0.1} />
-          </h1>
+          </WarpHeading>
           <Reveal delay={0.2}>
             <p className="page-lede">
               Creative and motivated Frontend Developer with three months of

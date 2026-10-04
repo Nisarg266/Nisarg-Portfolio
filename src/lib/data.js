@@ -42,6 +42,8 @@ export const PROJECTS = [
     initials: 'MF',
     tech: ['HTML', 'CSS', 'JAVASCRIPT'],
     variant: 'furniture',
+    video: '/20261004-1742-14.8562217.mp4',
+    liveUrl: 'https://maafurniture.netlify.app/',
     summary:
       'Responsive furniture website showcasing products and services with an intuitive interface and enhanced user experience.',
     caseSections: [

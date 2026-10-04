@@ -2,6 +2,7 @@ import { useState } from 'react'
 import SectionHeading from '../components/SectionHeading'
 import Reveal from '../components/Reveal'
 import SplitWords from '../components/SplitWords'
+import WarpHeading from '../components/WarpHeading'
 import Magnetic from '../components/Magnetic'
 import { ArrowUpRight } from '../components/Icons'
 import { usePageMeta } from '../hooks/usePageMeta'
@@ -38,7 +39,18 @@ export default function Contact() {
       <section className="section page-hero contact" aria-labelledby="contact-page-title">
         <div className="container">
           <SectionHeading title="Contact" id="contact-page-title" />
-          <h1 className="contact-title contact-title-page" id="contact-page-title">
+          <WarpHeading
+            as="h1"
+            className="contact-title contact-title-page"
+            id="contact-page-title"
+            text={"LET'S BUILD\nSOMETHING\nMEANINGFUL."}
+            outlineLines={[1]}
+            fontSize="clamp(2.5rem, 9.5vw, 8.6rem)"
+            fontWeight={600}
+            lineHeight={0.96}
+            letterSpacing="-0.035em"
+            onScroll={false}
+          >
             {LINES.map((line, i) => (
               <SplitWords
                 key={line.text}
@@ -48,7 +60,7 @@ export default function Contact() {
                 delay={i * 0.1}
               />
             ))}
-          </h1>
+          </WarpHeading>
 
           <Reveal delay={0.35}>
             <div className="contact-cta-wrap">

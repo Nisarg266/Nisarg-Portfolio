@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { ScrollTrigger } from './lib/gsap'
 import { prefersReducedMotion } from './hooks/useMediaQuery'
 import Cursor from './components/Cursor'
+import BubbleCursor from './components/BubbleCursor'
 import ScrollProgress from './components/ScrollProgress'
 import Preloader from './components/Preloader'
 import Navbar from './components/Navbar'
@@ -50,6 +51,7 @@ export default function App() {
         </a>
         <Preloader onComplete={handleIntroDone} />
         <Cursor />
+        <BubbleCursor />
         <ScrollProgress />
         <Navbar />
         <main id="main">

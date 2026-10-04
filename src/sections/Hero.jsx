@@ -3,6 +3,7 @@ import { gsap, ScrollTrigger } from '../lib/gsap'
 import { useFinePointer, useReducedMotion } from '../hooks/useMediaQuery'
 import { isWebGLAvailable } from '../lib/webgl'
 import ErrorBoundary from '../components/ErrorBoundary'
+import WarpText from '../components/WarpText'
 
 const SplineScene = lazy(() => import('./SplineBackground'))
 
@@ -167,6 +168,7 @@ export default function Hero({ started }) {
 
     const lines = section.querySelectorAll('.hero-name .mask-line > span')
     const fades = section.querySelectorAll('[data-hero-fade]')
+    const warp = section.querySelector('.hero-warp')
 
     if (reduced) {
       sceneWrapRef.current?.classList.add('is-visible')
@@ -396,12 +398,33 @@ export default function Hero({ started }) {
 
         <div className="hero-mid">
           <h1 className="hero-name" aria-label="Nisarg Panchal">
-            <span className="mask-line hero-l1">
+            <span className="mask-line hero-l1" aria-hidden="true">
               <span>NISARG</span>
             </span>
-            <span className="mask-line hero-l2">
+            <span className="mask-line hero-l2" aria-hidden="true">
               <span className="outline-text">PANCHAL</span>
             </span>
+            <WarpText
+              text={'NISARG\nPANCHAL'}
+              color="var(--text)"
+              fontFamily="var(--font-display)"
+              fontSize="clamp(3.4rem, 12vw, 13rem)"
+              fontWeight={700}
+              letterSpacing="-0.035em"
+              lineHeight={0.92}
+              align="left"
+              fitText={false}
+              outlineLines={[1]}
+              outlineScale={1.36}
+              warpStrength={0.025}
+              warpScale={1.2}
+              speed={0.35}
+              pointerInfluence={0.35}
+              pointerStrength={0.18}
+              refraction={0.007}
+              ripple
+              className="hero-warp"
+            />
           </h1>
 
           <p className="hero-role" data-hero-fade>

@@ -4,6 +4,7 @@ import { useReducedMotion } from '../hooks/useMediaQuery'
 import { usePageMeta } from '../hooks/usePageMeta'
 import SectionHeading from '../components/SectionHeading'
 import SplitWords from '../components/SplitWords'
+import WarpHeading from '../components/WarpHeading'
 import Reveal from '../components/Reveal'
 import { EXPERIENCE } from '../lib/data'
 
@@ -84,10 +85,21 @@ export default function Experience() {
       <section className="section page-hero" aria-labelledby="xp-page-title">
         <div className="container">
           <SectionHeading title="Experience" id="xp-page-title" />
-          <h1 className="page-title">
+          <WarpHeading
+            as="h1"
+            className="page-title"
+            id="xp-page-title"
+            text={"WHERE I'VE\nTRAINED"}
+            outlineLines={[1]}
+            fontSize="clamp(2.7rem, 10vw, 8.8rem)"
+            fontWeight={600}
+            lineHeight={0.96}
+            letterSpacing="-0.035em"
+            onScroll={false}
+          >
             <SplitWords text="WHERE I'VE" onScroll={false} />
             <SplitWords text="TRAINED" className="outline-text" onScroll={false} delay={0.1} />
-          </h1>
+          </WarpHeading>
         </div>
       </section>
 

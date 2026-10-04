@@ -6,5 +6,10 @@ export default defineConfig({
   base: '/',
   build: {
     chunkSizeWarningLimit: 900
+  },
+  server: {
+    watch: {
+      ignored: ['**/*.mp4', '**/public/*.mp4']
+    }
   }
 })

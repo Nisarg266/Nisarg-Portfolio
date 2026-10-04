@@ -2,6 +2,7 @@ import { useState } from 'react'
 import SectionHeading from '../components/SectionHeading'
 import Reveal from '../components/Reveal'
 import SplitWords from '../components/SplitWords'
+import WarpHeading from '../components/WarpHeading'
 import ProjectShowcase from '../components/ProjectShowcase'
 import { TLink } from '../components/Transition'
 import { ArrowRight, ArrowUpRight } from '../components/Icons'
@@ -13,17 +14,33 @@ import { PROJECTS, EXPERIENCE, CAPABILITIES, CERTIFICATIONS } from '../lib/data'
 function IntroStatement() {
   return (
     <section className="section intro-v2" aria-labelledby="intro-title">
+      <div className="intro-aurora" aria-hidden="true">
+        <span className="aurora-orb aurora-orb-1" />
+        <span className="aurora-orb aurora-orb-2" />
+        <span className="aurora-grid" />
+      </div>
       <span className="ghost-num" aria-hidden="true">
         01
       </span>
       <div className="container intro-grid">
         <div className="intro-left">
           <SectionHeading index="01" title="Introduction" id="intro-title" />
-          <h2 className="intro-big">
+          <WarpHeading
+            as="h2"
+            className="intro-big"
+            id="intro-title"
+            text={"I BUILD DIGITAL\nEXPERIENCES\nTHAT FEEL ALIVE."}
+            outlineLines={[1]}
+            fontSize="clamp(2.4rem, 7vw, 6.2rem)"
+            fontWeight={600}
+            lineHeight={1.02}
+            letterSpacing="-0.03em"
+            onScroll={true}
+          >
             <SplitWords text="I BUILD DIGITAL" />
             <SplitWords text="EXPERIENCES" className="outline-text" delay={0.12} />
             <SplitWords text="THAT FEEL ALIVE." delay={0.24} />
-          </h2>
+          </WarpHeading>
         </div>
         <Reveal delay={0.1} className="intro-side">
           <p className="kicker">Profile</p>
@@ -32,7 +49,18 @@ function IntroStatement() {
             across three companies — focused on responsive UI, performance,
             accessibility and interfaces that feel as good as they look.
           </p>
-          <TLink className="btn" to="/about" label="About">
+          <div className="intro-badges">
+            <span className="intro-badge">
+              <span className="ib-dot" /> 3+ Verified Internships
+            </span>
+            <span className="intro-badge">
+              <span className="ib-dot" /> 100% Fluid Responsive
+            </span>
+            <span className="intro-badge">
+              <span className="ib-dot" /> React · WebGL · CSS Architecture
+            </span>
+          </div>
+          <TLink className="btn" to="/about" label="About" style={{ marginTop: '6px' }}>
             More about me <ArrowRight />
           </TLink>
         </Reveal>
@@ -189,11 +217,22 @@ function HomeCTA() {
     <section className="section contact" aria-labelledby="home-cta-title">
       <div className="container">
         <SectionHeading index="06" title="Contact" id="home-cta-title" />
-        <h2 className="contact-title" id="home-cta-title">
+        <WarpHeading
+          as="h2"
+          className="contact-title"
+          id="home-cta-title"
+          text={"LET'S BUILD\nSOMETHING\nMEANINGFUL."}
+          outlineLines={[1]}
+          fontSize="clamp(3rem, 11vw, 9.5rem)"
+          fontWeight={600}
+          lineHeight={0.96}
+          letterSpacing="-0.035em"
+          onScroll={true}
+        >
           <SplitWords text="LET'S BUILD" />
           <SplitWords text="SOMETHING" className="outline-text" delay={0.1} />
           <SplitWords text="MEANINGFUL." delay={0.2} />
-        </h2>
+        </WarpHeading>
         <Reveal delay={0.15}>
           <div className="contact-row">
             <TLink className="btn btn--lg" to="/contact" label="Contact" data-cursor="OPEN">

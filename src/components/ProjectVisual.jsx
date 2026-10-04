@@ -44,6 +44,31 @@ function ProjectArt({ variant }) {
 }
 
 export default function ProjectVisual({ project }) {
+  if (project.video) {
+    return (
+      <div
+        className="pv pv-video-wrap"
+        role="region"
+        aria-label={`${project.title} live video preview`}
+      >
+        <div className="pv-inner pv-inner-video">
+          <video
+            src={project.video}
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="pv-video-element"
+            aria-label={`${project.title} walkthrough video`}
+          />
+          <div className="pv-video-overlay" aria-hidden="true" />
+          <span className="pv-label mono">PREVIEW — {project.index}</span>
+          <span className="pv-tag mono pv-tag-live">LIVE PREVIEW</span>
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div
       className="pv"

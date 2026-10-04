@@ -12,6 +12,7 @@
     "@splinetool/react-spline": "^2.2.6",
     "@splinetool/runtime": "^1.12.98",
     "gsap": "^3.12.5",
+    "ogl": "^1.0.11",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.30.6"
