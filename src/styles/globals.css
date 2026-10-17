@@ -2084,10 +2084,16 @@ html.no-js [data-reveal],
     justify-items: start;
     text-align: left;
   }
+  /* ghost number — floats fully above the frame so it never hides behind
+     the full-width preview on stacked layouts */
   .pf::before,
   .pf.alt::before {
     font-size: 5.5rem;
-    top: -1.1rem;
+    top: -5.75rem;
+  }
+  /* guarantee room for the number in the gap between cards */
+  .pf-list {
+    gap: clamp(104px, 14vh, 170px);
   }
 }
 
