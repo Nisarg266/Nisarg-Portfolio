@@ -829,6 +829,45 @@ html.no-js [data-reveal],
   gap: 14px;
 }
 
+/* phone — compact one-line wordmark; the brand must never wrap */
+@media (max-width: 640px) {
+  .nav-inner {
+    gap: 12px;
+    padding: 10px 12px 10px 14px;
+  }
+  .brand {
+    gap: 10px;
+    min-width: 0;
+  }
+  .brand-mark {
+    width: 34px;
+    height: 34px;
+    border-radius: 9px;
+    font-size: 13px;
+  }
+  .brand-text {
+    min-width: 0;
+  }
+  .brand-text strong,
+  .brand-text em {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .brand-text strong {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+  }
+  .brand-text em {
+    font-size: 8.5px;
+    letter-spacing: 0.12em;
+  }
+  .nav-actions {
+    gap: 10px;
+    flex-shrink: 0;
+  }
+}
+
 /* ==========================================================================
    MOBILE MENU
    ========================================================================== */
