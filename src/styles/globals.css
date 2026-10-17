@@ -2091,13 +2091,13 @@ html.no-js [data-reveal],
     font-size: 5.5rem;
     top: -5.75rem;
   }
-  /* ghost numbers float ~92px above each frame — keep a matching pocket
-     of air above the first card too (the page intro sits only ~15px above
-     the list on Work) and enlarge the between-cards gap the same way, so
-     the number never touches the text or the card above it */
+  /* ghost numbers float ~92px above each frame — the between-cards gap
+     gives every number its clearance; the first card gets the exact same
+     clearance by subtracting the page hero's own bottom padding (its
+     clamp mirrors .page-hero's) from the top pocket */
   .pf-list {
-    gap: clamp(116px, 15vh, 180px);
-    padding-top: calc(clamp(116px, 15vh, 180px) - 15px);
+    gap: clamp(106px, calc(15vh - 20px), 160px);
+    padding-top: calc(clamp(106px, calc(15vh - 20px), 160px) - clamp(36px, 7vh, 76px));
   }
 }
 
@@ -3830,6 +3830,16 @@ html.no-js [data-reveal],
   -webkit-text-stroke: 2px var(--ghost-stroke);
   pointer-events: none;
   user-select: none;
+}
+/* stacked layouts: the number moves into the section's top padding —
+   above the kicker, right-aligned with the content, sized to the padding
+   so it never crosses the heading text (desktop keeps the big watermark) */
+@media (max-width: 900px) {
+  .ghost-num {
+    top: 12px;
+    right: var(--gutter);
+    font-size: calc(var(--section-pad) - 26px);
+  }
 }
 
 /* corner ticks for media frames */
