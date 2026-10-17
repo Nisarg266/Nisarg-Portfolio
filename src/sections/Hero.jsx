@@ -1,6 +1,6 @@
 import { lazy, Suspense, useEffect, useMemo, useRef } from 'react'
 import { gsap, ScrollTrigger } from '../lib/gsap'
-import { useFinePointer, useReducedMotion } from '../hooks/useMediaQuery'
+import { useFinePointer, useMediaQuery, useReducedMotion } from '../hooks/useMediaQuery'
 import { isWebGLAvailable } from '../lib/webgl'
 import ErrorBoundary from '../components/ErrorBoundary'
 import WarpText from '../components/WarpText'
@@ -62,8 +62,13 @@ export default function Hero({ started }) {
   const sectionRef = useRef(null)
   const innerRef = useRef(null)
   const sceneWrapRef = useRef(null)
+  const phoneRef = useRef(null)
   const reduced = useReducedMotion()
   const fine = useFinePointer()
+  // phones skip the 3D scene entirely — the Spline runtime never downloads
+  // there; a pure-CSS living scene (.hero-phone-scene) replaces it. The
+  // 900px threshold mirrors the navigation's mobile breakpoint.
+  const isPhone = useMediaQuery('(max-width: 900px)')
 
   // interaction state — refs only
   const sceneApiRef = useRef(null) // { app, robot, bubbles, rest, t0 }
@@ -214,6 +219,7 @@ export default function Hero({ started }) {
   // the native pipeline runs exactly as authored while the canvas stays
   // pointer-blocked (raycast hover states — the grey washout — never fire).
   useEffect(() => {
+    if (isPhone) return undefined // no 3D scene on phones — nothing to drive
     const DZ = 0.12 // dead zone — near-center cursor ≈ neutral pose
     const YAW = 0.13 // ±7.4°  turn toward the cursor
     const PITCH = 0.07 // ±4.0°  nod up/down (cursor up → look up)
@@ -321,7 +327,7 @@ export default function Hero({ started }) {
       }
       cancelAnimationFrame(raf)
     }
-  }, [reduced, fine])
+  }, [reduced, fine, isPhone])
 
   // scroll: content lifts, scene fades and stops rendering once out of view
   useEffect(() => {
@@ -338,7 +344,10 @@ export default function Hero({ started }) {
           scrub: true
         }
       })
-      gsap.to(sceneWrapRef.current, {
+      // the scene (Spline on desktop, the CSS living scene on phones)
+      // fades out as the hero scrolls away
+      const sceneLayers = [sceneWrapRef.current, phoneRef.current].filter(Boolean)
+      gsap.to(sceneLayers, {
         autoAlpha: 0.08,
         ease: 'none',
         immediateRender: false,
@@ -354,10 +363,14 @@ export default function Hero({ started }) {
         trigger: sectionRef.current,
         start: 'bottom top',
         onLeave: () => {
-          sceneWrapRef.current.style.visibility = 'hidden'
+          sceneLayers.forEach((el) => {
+            el.style.visibility = 'hidden'
+          })
         },
         onEnterBack: () => {
-          sceneWrapRef.current.style.visibility = 'visible'
+          sceneLayers.forEach((el) => {
+            el.style.visibility = 'visible'
+          })
         }
       })
     })
@@ -378,11 +391,27 @@ export default function Hero({ started }) {
         <div className="scene-aura-core" />
       </div>
 
+      {/* phone-only living scene — replaces the 3D character on small
+          screens: a slow aurora wash, drifting accent glows and rising
+          sparks, all CSS-driven (transform/opacity only) */}
+      <div className="hero-phone-scene" ref={phoneRef} aria-hidden="true">
+        <span className="hps-aurora" />
+        <span className="hps-orb hps-orb-a" />
+        <span className="hps-orb hps-orb-b" />
+        <span className="hps-orb hps-orb-c" />
+        <span className="hps-spark hps-spark-1" />
+        <span className="hps-spark hps-spark-2" />
+        <span className="hps-spark hps-spark-3" />
+        <span className="hps-spark hps-spark-4" />
+        <span className="hps-spark hps-spark-5" />
+        <span className="hps-spark hps-spark-6" />
+      </div>
+
       {/* layer 1 — the Spline environment. The canvas itself NEVER moves:
           pointer-events blocked (no raycast hover states / washout) and all
           character motion happens on the Robot object inside the scene. */}
       <div className="spline-layer" ref={sceneWrapRef} aria-hidden="true">
-        <HeroVisual onSceneLoad={handleSceneLoad} />
+        {!isPhone && <HeroVisual onSceneLoad={handleSceneLoad} />}
       </div>
 
       {/* layer 2 — atmosphere: contrast scrim (unchanged) + the designed
