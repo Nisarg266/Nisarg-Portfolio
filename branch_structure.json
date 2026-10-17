@@ -1,0 +1,21 @@
+{
+  "default_branch": "main",
+  "branches": [
+    "dependabot/npm_and_yarn/npm_and_yarn-61103fccbc",
+    "dependabot/npm_and_yarn/npm_and_yarn-63f9813d79",
+    "main",
+    "origin"
+  ],
+  "parent": {
+    "dependabot/npm_and_yarn/npm_and_yarn-61103fccbc": "main",
+    "dependabot/npm_and_yarn/npm_and_yarn-63f9813d79": "main",
+    "main": null,
+    "origin": "main"
+  },
+  "order": [
+    "main",
+    "dependabot/npm_and_yarn/npm_and_yarn-61103fccbc",
+    "dependabot/npm_and_yarn/npm_and_yarn-63f9813d79",
+    "origin"
+  ]
+}
