@@ -2091,9 +2091,13 @@ html.no-js [data-reveal],
     font-size: 5.5rem;
     top: -5.75rem;
   }
-  /* guarantee room for the number in the gap between cards */
+  /* ghost numbers float ~92px above each frame — keep a matching pocket
+     of air above the first card too (the page intro sits only ~15px above
+     the list on Work) and enlarge the between-cards gap the same way, so
+     the number never touches the text or the card above it */
   .pf-list {
-    gap: clamp(104px, 14vh, 170px);
+    gap: clamp(116px, 15vh, 180px);
+    padding-top: calc(clamp(116px, 15vh, 180px) - 15px);
   }
 }
 
