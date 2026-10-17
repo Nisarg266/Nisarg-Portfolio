@@ -66,26 +66,29 @@ export const PROJECTS = [
     ]
   },
   {
-    id: 'web-website',
-    slug: 'web-website',
+    id: 'sip-chill-cafe',
+    slug: 'sip-chill-cafe',
     index: '02',
-    title: 'WEB WEBSITE',
-    initials: 'WW',
+    title: 'SIP & CHILL CAFE',
+    initials: 'SC',
     tech: ['HTML', 'CSS', 'JAVASCRIPT'],
     variant: 'web',
-    summary: 'Modern responsive website with a clean UI and smooth user experience.',
+    video: '/2.mp4',
+    liveUrl: 'https://nisarg266.github.io/Cafe/index.html',
+    summary:
+      'A responsive café website presenting the story, full menu and gallery of Sip & Chill Café with a warm, inviting experience.',
     caseSections: [
       {
         label: 'Overview',
-        body: 'A modern responsive website with a clean UI and a smooth user experience throughout.'
+        body: 'A responsive website for Sip & Chill Café, built to present the story, full menu, gallery and visit details of the café with a warm, inviting interface.'
       },
       {
         label: 'Technology',
-        body: 'Built with HTML, CSS and JavaScript — no frameworks, just the fundamentals used carefully.'
+        body: 'Built with HTML, CSS and JavaScript, animated with GSAP — no frameworks, just the fundamentals used carefully.'
       },
       {
         label: 'Interface',
-        body: 'A clean, modern interface kept deliberately simple so the experience stays smooth and focused.'
+        body: 'The menu, gallery and story are presented through a warm, intuitive UI — including a dedicated menu page with live search.'
       },
       {
         label: 'Responsive Design',

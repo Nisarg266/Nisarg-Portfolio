@@ -19,6 +19,8 @@
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.3.4",
+    "pdf-to-img": "^7.0.1",
+    "pdfjs-dist": "^6.4.299",
     "vite": "^5.4.11"
   }
 }

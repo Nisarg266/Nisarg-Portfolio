@@ -36,8 +36,8 @@ export default function Work() {
           <Reveal delay={0.2}>
             <p className="page-lede">
               Every project below is real work from my CV — described exactly
-              as it was built, placeholders marking where live screenshots
-              will go.
+              as it was built, with a live walkthrough preview and a link to
+              the published website.
             </p>
           </Reveal>
         </div>

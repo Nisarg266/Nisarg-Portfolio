@@ -4,6 +4,7 @@ import { useFinePointer, useReducedMotion } from '../hooks/useMediaQuery'
 import { isWebGLAvailable } from '../lib/webgl'
 import ErrorBoundary from '../components/ErrorBoundary'
 import WarpText from '../components/WarpText'
+import { HeroEnvironmentBase, HeroEnvironmentOverlay } from '../components/HeroBackground'
 
 const SplineScene = lazy(() => import('./SplineBackground'))
 
@@ -365,9 +366,10 @@ export default function Hero({ started }) {
 
   return (
     <section className="hero" id="home" ref={sectionRef} aria-label="Introduction">
-      {/* layer 0 — base ambience */}
+      {/* layer 0 — designed environment base (tonal wash + softbox light,
+          below the canvas; also drives the env parallax variables) */}
       <div className="hero-background" aria-hidden="true">
-        <div className="hero-light" />
+        <HeroEnvironmentBase />
       </div>
 
       {/* soft light behind the scene — pure CSS breathing, never follows
@@ -383,10 +385,12 @@ export default function Hero({ started }) {
         <HeroVisual onSceneLoad={handleSceneLoad} />
       </div>
 
-      {/* layer 2 — atmosphere: contrast scrim + technical grid (static) */}
+      {/* layer 2 — atmosphere: contrast scrim (unchanged) + the designed
+          environment overlay (grid / guides / grounding / meta / vignette).
+          Transparent layers only — the robot stays clearly visible. */}
       <div className="hero-atmosphere" aria-hidden="true">
         <div className="hero-scrim" />
-        <div className="hero-gridlines" />
+        <HeroEnvironmentOverlay />
       </div>
 
       {/* layer 3 — typography, metadata, CTA */}

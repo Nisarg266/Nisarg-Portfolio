@@ -9,7 +9,10 @@ export default defineConfig({
   },
   server: {
     watch: {
-      ignored: ['**/*.mp4', '**/public/*.mp4']
+      // Static assets don't need HMR watching, and OneDrive-synced media/
+      // documents can be locked mid-sync or open in another app — watching
+      // them crashes the watcher with EBUSY, so they are excluded here.
+      ignored: ['**/*.mp4', '**/public', '**/public/**']
     }
   }
 })

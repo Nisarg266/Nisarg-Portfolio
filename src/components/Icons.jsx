@@ -21,3 +21,27 @@ export function ArrowUp({ size = 12 }) {
     </svg>
   )
 }
+
+export function ArrowLeft({ size = 14 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 16 16" fill="none" aria-hidden="true">
+      <path d="M15 8H2M7 3l-5 5 5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  )
+}
+
+export function Close({ size = 14 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 16 16" fill="none" aria-hidden="true">
+      <path d="M3 3l10 10M13 3L3 13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+    </svg>
+  )
+}
+
+export function Download({ size = 13 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 16 16" fill="none" aria-hidden="true">
+      <path d="M8 2v8M4.5 7L8 10.5 11.5 7M3 13.5h10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  )
+}

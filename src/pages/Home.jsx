@@ -86,7 +86,7 @@ function WorkPreview() {
         <ProjectShowcase projects={PROJECTS} />
         <Reveal>
           <p className="work-note">
-            Live links will replace the placeholder frames as each project is published.
+            Every project is live — open a case study for the walkthrough and the published link.
           </p>
         </Reveal>
       </div>

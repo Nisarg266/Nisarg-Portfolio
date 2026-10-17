@@ -9,6 +9,7 @@ import Preloader from './components/Preloader'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import TransitionProvider from './components/Transition'
+import PageAmbience from './components/PageAmbience'
 import { ThemeProvider } from './theme/ThemeProvider'
 import Home from './pages/Home'
 import Work from './pages/Work'
@@ -55,6 +56,7 @@ export default function App() {
         <ScrollProgress />
         <Navbar />
         <main id="main">
+          <PageAmbience />
           <Routes>
             <Route path="/" element={<Home started={introDone} />} />
             <Route path="/work" element={<Work />} />
